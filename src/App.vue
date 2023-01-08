@@ -4,7 +4,7 @@
 
         <v-app>
             <v-navigation-drawer app>
-                {{ $store.state.inner_component_data }}
+                <app-navigation-drawer></app-navigation-drawer>
             </v-navigation-drawer>
 
             <v-app-bar app>
@@ -27,5 +27,14 @@
         </v-app>
     </div>
 </template>
+
+<script>
+import AppNavigationDrawer from "./views/AppNavigationDrawer.vue"
+export default {
+    components: {
+        AppNavigationDrawer,
+    },
+}
+</script>
 
 <style></style>
