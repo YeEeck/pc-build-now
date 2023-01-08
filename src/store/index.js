@@ -6,11 +6,15 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         inner_component_data: null,
+        outer_component_data: null,
     },
     getters: {},
     mutations: {
         update_inner_component_data(state, data) {
             state.inner_component_data = data
+        },
+        update_outer_component_data(state, data) {
+            state.outer_component_data = data
         },
     },
     actions: {},

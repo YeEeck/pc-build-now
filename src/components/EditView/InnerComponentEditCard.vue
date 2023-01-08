@@ -1,79 +1,74 @@
 <template>
-    <v-card>
-        <v-card-title>主机配置调整</v-card-title>
-        <v-card-subtitle>
-            你可以在这里调整你为PC主机准备的详细配置，包括但不限于型号、数量、价格以及你为读者准备的链接。
-        </v-card-subtitle>
-        <v-card-text>
-            <v-row
-                dense
-                justify="center"
-                align="baseline"
-                v-for="(item, i) in component_data"
-                :key="i"
-            >
-                <v-col cols="2">
-                    <v-combobox
-                        v-model="item.type"
-                        :items="pc_component_types_processed"
-                        label="配件类别"
-                        outlined
-                        dense
-                    ></v-combobox>
-                </v-col>
-                <v-col cols="6">
-                    <v-text-field
-                        outlined
-                        dense
-                        label="型号"
-                        v-model="item.name"
-                    ></v-text-field>
-                </v-col>
-                <v-col cols="1">
-                    <v-text-field
-                        outlined
-                        dense
-                        label="单价"
-                        v-model="item.cost"
-                    ></v-text-field>
-                </v-col>
-                <v-col cols="1">
-                    <v-text-field
-                        outlined
-                        dense
-                        label="数量"
-                        v-model="item.amount"
-                    ></v-text-field>
-                </v-col>
-                <v-col cols="1">
-                    <v-text-field
-                        dense
-                        outlined
-                        readonly
-                        label="总价"
-                        :value="item.cost * item.amount"
-                    ></v-text-field>
-                </v-col>
-                <v-col cols="1" class="text-align-center">
-                    <v-btn icon @click="deleteComponentDataItem(i)">
-                        <v-icon>mdi-delete</v-icon>
-                    </v-btn>
-                </v-col>
-                <v-col cols="12">
-                    <v-text-field
-                        outlined
-                        dense
-                        label="链接（可选）"
-                        v-model="item.link"
-                    ></v-text-field>
-                </v-col>
-                <v-col><v-divider></v-divider><br /></v-col>
-            </v-row>
-            <v-btn icon @click="addComponentDataItem">
-                <v-icon>mdi-plus</v-icon>
-            </v-btn>
-        </v-card-text>
-    </v-card>
+    <div>
+        <v-row
+            class="mt-4"
+            dense
+            justify="center"
+            align="baseline"
+            v-for="(item, i) in component_data"
+            :key="i"
+        >
+            <v-col cols="2">
+                <v-combobox
+                    v-model="item.type"
+                    :items="pc_component_types_processed"
+                    label="配件类别"
+                    outlined
+                    dense
+                ></v-combobox>
+            </v-col>
+            <v-col cols="6">
+                <v-text-field
+                    outlined
+                    dense
+                    label="型号"
+                    v-model="item.name"
+                ></v-text-field>
+            </v-col>
+            <v-col cols="1">
+                <v-text-field
+                    outlined
+                    dense
+                    label="单价"
+                    v-model="item.cost"
+                ></v-text-field>
+            </v-col>
+            <v-col cols="1">
+                <v-text-field
+                    outlined
+                    dense
+                    label="数量"
+                    v-model="item.amount"
+                ></v-text-field>
+            </v-col>
+            <v-col cols="1">
+                <v-text-field
+                    dense
+                    outlined
+                    readonly
+                    label="总价"
+                    :value="item.cost * item.amount"
+                ></v-text-field>
+            </v-col>
+            <v-col cols="1" class="text-align-center">
+                <v-btn icon @click="deleteComponentDataItem(i)">
+                    <v-icon>mdi-delete</v-icon>
+                </v-btn>
+            </v-col>
+            <v-col cols="12">
+                <v-text-field
+                    outlined
+                    dense
+                    label="链接（可选）"
+                    v-model="item.link"
+                ></v-text-field>
+            </v-col>
+            <v-col><v-divider></v-divider><br /></v-col>
+        </v-row>
+        <v-btn icon @click="addComponentDataItem">
+            <v-icon>mdi-plus</v-icon>
+        </v-btn>
+    </div>
 </template>
 <script>
 // 配件表空数据模板
