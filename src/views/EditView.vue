@@ -37,14 +37,26 @@
 
             <v-stepper-content step="2">
                 <outer-component-edit-card></outer-component-edit-card>
-                <v-btn color="primary" class="mt-4" @click="step_main = 3">
+                <v-btn
+                    color="primary"
+                    class="mt-4"
+                    block
+                    @click="step_main = 3"
+                >
                     下一步
                 </v-btn>
             </v-stepper-content>
 
             <v-stepper-content step="3">
                 <total-information-card></total-information-card>
-                <v-btn color="primary" @click="step_main = 4"> 下一步 </v-btn>
+                <v-btn
+                    color="primary"
+                    class="mt-4"
+                    block
+                    @click="step_main = 4"
+                >
+                    信息核对无误，下一步
+                </v-btn>
             </v-stepper-content>
         </v-stepper>
     </div>

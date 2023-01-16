@@ -1,7 +1,7 @@
 <template>
     <div
         id="EchartsPieChartPriceComposition"
-        style="width: 300px; height: 300px"
+        style="width: 500px; height: 500px"
     ></div>
 </template>
 
@@ -74,11 +74,10 @@ export default {
                             name: "价格组成",
                             type: "pie",
                             data: this.price_data_processed,
-                            radius: ["40%", "70%"],
+                            radius: ["30%", "60%"],
                             label: {
                                 //饼图文字的显示
                                 show: true, //默认  显示文字
-                                position: "inside",
                                 formatter: function (arg) {
                                     return arg.name + "\n" + arg.percent + "%"
                                 },
@@ -89,10 +88,10 @@ export default {
                         {
                             type: "circle",
                             id: "circle",
-                            left: 93,
-                            top: 93,
+                            left: 178,
+                            top: 178,
                             shape: {
-                                r: 57,
+                                r: 72,
                             },
                             style: {
                                 fill: "#00ACC1",
