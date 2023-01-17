@@ -20,6 +20,7 @@
             v-for="(item, i) in $store.state.inner_component_data"
             :key="i"
             align="baseline"
+            dense
           >
             <v-col cols="2">{{ item.type }}</v-col>
             <v-col cols="8">{{ item.name }}</v-col>
@@ -51,11 +52,22 @@
           <v-row
             v-for="(item, i) in $store.state.outer_component_data"
             :key="i"
+            dense
+            align="baseline"
           >
             <v-col cols="2">{{ item.type }}</v-col>
             <v-col cols="8">{{ item.name }}</v-col>
-            <v-col cols="2">
+            <v-col cols="1">
               {{ item.cost * item.amount }}
+            </v-col>
+            <v-col cols="1">
+              <v-btn
+                icon
+                @click="linkTo(item.link)"
+                :disabled="item.link == ''"
+              >
+                <v-icon>mdi-link-variant</v-icon>
+              </v-btn>
             </v-col>
           </v-row>
         </v-list-item-subtitle>
