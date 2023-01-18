@@ -43,6 +43,10 @@
           信息核对无误，下一步
         </v-btn>
       </v-stepper-content>
+
+      <v-stepper-content step="4">
+        <relese-list-card></relese-list-card>
+      </v-stepper-content>
     </v-stepper>
   </div>
 </template>
@@ -51,6 +55,7 @@
 import InnerComponentEditCard from "../components/EditView/InnerComponentEditCard.vue"
 import TotalInformationCard from "../components/EditView/TotalInformationCard.vue"
 import OuterComponentEditCard from "../components/EditView/OuterComponentEditCard.vue"
+import ReleseListCard from "../components/EditView/ReleseListCard.vue"
 
 export default {
   name: "HomeView",
@@ -58,6 +63,7 @@ export default {
     InnerComponentEditCard,
     TotalInformationCard,
     OuterComponentEditCard,
+    ReleseListCard,
   },
   data: () => ({
     step_main: 1,
