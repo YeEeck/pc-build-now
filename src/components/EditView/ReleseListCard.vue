@@ -22,8 +22,8 @@ export default {
   computed: {
     list_data_base64_url() {
       let list_data_json = JSON.stringify(this.list_data)
-      console.log(list_data_json)
-      // 由于生成的Base64要放在URL里传输，如果不使用encodeURL,+和=字符会产生错误。
+      // console.log(list_data_json)
+      // 由于生成的Base64要放在URL里传输，如果不使用encodeURL，+和=字符会产生错误。
       let list_data_json_base64 = Base64.encodeURL(list_data_json)
       return window.location.href + "show?data=" + list_data_json_base64
     },

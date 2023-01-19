@@ -1,11 +1,13 @@
 <template>
   <div>
     <!-- 由于不想展示默认的分页、计数，使用hide-default-footer属性隐藏默认脚标 -->
+    <!-- 由于展示的要求，分页也是不需要的，使用disable-pagination禁用分页 -->
     <v-data-table
       :headers="headers"
       :items="list_data"
       class="elevation-1"
       hide-default-footer
+      disable-pagination
     >
       <template v-slot:top>
         <v-toolbar flat>
@@ -49,6 +51,7 @@ export default {
     title: String,
   },
   mounted() {
+    // 由于展示页面不涉及到数据的更改，直接将listData参数转换为data后修改即可。
     this.$nextTick(() => {
       this.list_data = JSON.parse(JSON.stringify(this.listData))
       this.formatData()
