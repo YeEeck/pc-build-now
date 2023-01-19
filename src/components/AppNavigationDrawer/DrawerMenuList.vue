@@ -40,8 +40,14 @@ export default {
       { text: "配置单生成", icon: "mdi-pen" },
       { text: "历史配置", icon: "mdi-history" },
       { text: "配置单集市", icon: "mdi-store" },
+      { text: "配置单阅览", icon: "mdi-book-open-variant" },
       { text: "关于 Build PC Now", icon: "mdi-information-outline" },
     ],
   }),
+  mounted() {
+    if (this.$route.path == "/show") {
+      this.selectedItem = 3
+    }
+  },
 }
 </script>
