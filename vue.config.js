@@ -3,6 +3,7 @@ const CompressionWebpackPlugin = require("compression-webpack-plugin")
 module.exports = defineConfig({
     transpileDependencies: true,
     productionSourceMap: false,
+    publicPath: "./",
     configureWebpack: (config) => {
         config.plugins.push(
             new CompressionWebpackPlugin({
