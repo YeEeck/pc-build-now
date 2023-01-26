@@ -1,0 +1,64 @@
+<!doctype html><html lang=""><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="icon" href="/favicon.ico"/><title>来装机吧！——一站式PC装机配置单编写查看与分析</title><style>body {
+                margin: 0;
+            }
+            #Loading-Background {
+                height: 100%;
+                width: 100%;
+                background-color: #fff;
+                z-index: 99;
+                position: absolute;
+            }
+            #Loading {
+                top: 50%;
+                left: 50%;
+                position: absolute;
+                -webkit-transform: translateY(-50%) translateX(-50%);
+                transform: translateY(-50%) translateX(-50%);
+                z-index: 100;
+                text-align: center;
+                font-size: 22px;
+            }
+            @-webkit-keyframes ball-beat {
+                50% {
+                    opacity: 0.2;
+                    -webkit-transform: scale(0.75);
+                    transform: scale(0.75);
+                }
+
+                100% {
+                    opacity: 1;
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
+                }
+            }
+
+            @keyframes ball-beat {
+                50% {
+                    opacity: 0.2;
+                    -webkit-transform: scale(0.75);
+                    transform: scale(0.75);
+                }
+
+                100% {
+                    opacity: 1;
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
+                }
+            }
+
+            .ball-beat > div {
+                background-color: #4999ff;
+                width: 10px;
+                height: 10px;
+                border-radius: 100% !important;
+                margin: 2px;
+                -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+                display: inline-block;
+                -webkit-animation: ball-beat 0.7s 0s infinite linear;
+                animation: ball-beat 0.7s 0s infinite linear;
+            }
+            .ball-beat > div:nth-child(2n-1) {
+                -webkit-animation-delay: 0.35s !important;
+                animation-delay: 0.35s !important;
+            }</style><script defer="defer" src="/js/chunk-vendors.a22979a5.js"></script><script defer="defer" src="/js/app.7713f87b.js"></script><link href="/css/chunk-vendors.e2a51094.css" rel="stylesheet"><link href="/css/app.d3719b54.css" rel="stylesheet"></head><body><noscript><strong>We're sorry but pc-build-now doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="Loading-Background"><div id="Loading"><p style="font-size: 30px; font-weight: bold">PC Build Now! 来装机吧！</p><p class="load_title">正在加载应用资源，请耐心等待...</p><div class="loader-inner ball-beat"><div></div><div></div><div></div></div></div></div><div id="app"></div></body></html>
