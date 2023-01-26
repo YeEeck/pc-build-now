@@ -50,6 +50,13 @@ export default {
     components: {
         AppNavigationDrawer,
     },
+    mounted() {
+        // 关闭public/index.html中的加载页面
+        document.onreadystatechange = function () {
+            if (document.getElementById("Loading-Background"))
+                document.getElementById("Loading-Background").remove()
+        }
+    },
 }
 </script>
 
