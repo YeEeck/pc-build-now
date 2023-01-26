@@ -1,12 +1,23 @@
 <template>
     <div>
         <br />
-        <v-text-field
-            outlined
-            readonly
-            :value="list_data_base64_url"
-            label="分享网址"
-        ></v-text-field>
+        <snack-bar :text="snack_text" v-model="snackbar"></snack-bar>
+        <v-row align="baseline">
+            <v-col cols="11">
+                <v-text-field
+                    outlined
+                    readonly
+                    :value="list_data_base64_url"
+                    label="分享网址"
+                ></v-text-field>
+            </v-col>
+            <v-col class="text-center">
+                <v-btn icon @click="copyDataURL">
+                    <v-icon>mdi-file-export</v-icon>
+                </v-btn>
+            </v-col>
+        </v-row>
+
         <div class="qrcode" ref="qrCodeUrl"></div>
     </div>
 </template>
@@ -14,6 +25,7 @@
 <script>
 const Base64 = require("js-base64").Base64
 import QRCode from "qrcodejs2"
+import SnackBar from "../PublicUtil/SnackBar.vue"
 export default {
     data: () => ({
         list_data: {
@@ -21,7 +33,12 @@ export default {
             outer_component_data: null,
             qrcode_update_timeout: null,
         },
+        snack_text: "",
+        snackbar: false,
     }),
+    components: {
+        SnackBar,
+    },
     computed: {
         list_data_base64_url() {
             let list_data_json = JSON.stringify(this.list_data)
@@ -66,6 +83,19 @@ export default {
                 colorLight: "#ffffff",
                 correctLevel: QRCode.CorrectLevel.M,
             })
+        },
+        copyDataURL() {
+            navigator.clipboard
+                .writeText(this.list_data_base64_url)
+                .then(() => {
+                    this.snack_text = "链接复制已完成"
+                    this.snackbar = true
+                })
+                .catch(() => {
+                    this.snack_text =
+                        "复制请求出错，如有提示，请同意网页访问剪贴板"
+                    this.snackbar = true
+                })
         },
     },
 }
