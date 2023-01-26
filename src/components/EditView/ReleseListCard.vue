@@ -12,20 +12,27 @@
                 ></v-text-field>
             </v-col>
             <v-col class="text-center">
+                <v-btn
+                    icon
+                    @click="linkTo(list_data_base64_url)"
+                    :disabled="list_data_base64_url == ''"
+                >
+                    <v-icon>mdi-link-variant</v-icon>
+                </v-btn>
                 <v-btn icon @click="copyDataURL">
                     <v-icon>mdi-file-export</v-icon>
                 </v-btn>
             </v-col>
         </v-row>
 
-        <div class="qrcode" ref="qrCodeUrl"></div>
+        <qr-code :url="list_data_base64_url" lazyUpdate></qr-code>
     </div>
 </template>
 
 <script>
 const Base64 = require("js-base64").Base64
-import QRCode from "qrcodejs2"
 import SnackBar from "../PublicUtil/SnackBar.vue"
+import QrCode from "./ReleseListCard/QrCode.vue"
 export default {
     data: () => ({
         list_data: {
@@ -38,7 +45,9 @@ export default {
     }),
     components: {
         SnackBar,
+        QrCode,
     },
+    mounted() {},
     computed: {
         list_data_base64_url() {
             let list_data_json = JSON.stringify(this.list_data)
@@ -61,29 +70,17 @@ export default {
                 this.list_data.outer_component_data = newValue
             },
         },
-        list_data_base64_url() {
-            if (this.qrcode_update_timeout != null) {
-                clearTimeout(this.qrcode_update_timeout)
-            }
-            // 当用户3秒未输入时才再次渲染二维码，减少输入卡顿
-            this.qrcode_update_timeout = setTimeout(() => {
-                this.createQrCode()
-            }, 3000)
-        },
+        // list_data_base64_url() {
+        //     if (this.qrcode_update_timeout != null) {
+        //         clearTimeout(this.qrcode_update_timeout)
+        //     }
+        //     // 当用户3秒未输入时才再次渲染二维码，减少输入卡顿
+        //     this.qrcode_update_timeout = setTimeout(() => {
+        //         this.res_list_data_base64_url = this.list_data_base64_url
+        //     }, 3000)
+        // },
     },
-    mounted() {},
     methods: {
-        createQrCode() {
-            this.$refs.qrCodeUrl.innerHTML = ""
-            new QRCode(this.$refs.qrCodeUrl, {
-                text: this.list_data_base64_url, // 需要转换为二维码的内容
-                width: 300,
-                height: 300,
-                colorDark: "#000000",
-                colorLight: "#ffffff",
-                correctLevel: QRCode.CorrectLevel.M,
-            })
-        },
         copyDataURL() {
             navigator.clipboard
                 .writeText(this.list_data_base64_url)

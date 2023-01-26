@@ -6,6 +6,10 @@ import vuetify from "@/plugins/vuetify" // path to vuetify export
 
 Vue.config.productionTip = false
 
+Vue.prototype.linkTo = function (url) {
+    window.open(url)
+}
+
 new Vue({
     router,
     store,
